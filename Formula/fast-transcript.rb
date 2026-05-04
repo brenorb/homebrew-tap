@@ -4,6 +4,12 @@ class FastTranscript < Formula
   version "0.2.1"
   license "MIT"
 
+  bottle do
+    root_url "https://github.com/brenorb/homebrew-fast-transcript/releases/download/fast-transcript-0.2.1"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_tahoe: "6119ef40077992f067c33b95b8a4825db492a8193c7f372b5771a66fd60cfb52"
+  end
+
   if OS.mac? && Hardware::CPU.arm?
     url "https://github.com/brenorb/fast-transcript/releases/download/v0.2.1/fast-transcript-v0.2.1-macos-arm64.tar.gz"
     sha256 "812bd97169d865387fd4bb005d9f6b9bb86f1ea7b09409f2c842d54d2d333f0e"
