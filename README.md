@@ -2,15 +2,20 @@
 
 ## How do I install these formulae?
 
-`brew install brenorb/fast-transcript/<formula>`
+`brew install brenorb/fast-transcript/fast-transcript`
 
-Or `brew tap brenorb/fast-transcript` and then `brew install <formula>`.
+Or:
+
+```bash
+brew tap brenorb/fast-transcript
+brew install fast-transcript
+```
 
 Or, in a `brew bundle` `Brewfile`:
 
 ```ruby
 tap "brenorb/fast-transcript"
-brew "<formula>"
+brew "fast-transcript"
 ```
 
 ## Documentation
