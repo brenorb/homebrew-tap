@@ -5,7 +5,7 @@ class FastTranscript < Formula
   license "MIT"
 
   bottle do
-    root_url "https://github.com/brenorb/homebrew-fast-transcript/releases/download/fast-transcript-0.2.1"
+    root_url "https://github.com/brenorb/fast-transcript/releases/download/v0.2.1"
     rebuild 1
     sha256 cellar: :any_skip_relocation, arm64_tahoe: "6119ef40077992f067c33b95b8a4825db492a8193c7f372b5771a66fd60cfb52"
   end
