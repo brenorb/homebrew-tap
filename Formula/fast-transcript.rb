@@ -1,18 +1,18 @@
 class FastTranscript < Formula
   desc "Fast local transcription for large lectures with NVIDIA Parakeet ONNX"
   homepage "https://github.com/brenorb/fast-transcript"
-  version "0.2.8"
+  version "0.2.9"
   license "MIT"
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/brenorb/fast-transcript/releases/download/v0.2.8/fast-transcript-v0.2.8-macos-arm64.tar.gz"
-    sha256 "e746703c73b4d546ad18f9b2df3f3d33dd977dfe02d9c2ee3dab56b38dbdf827"
+    url "https://github.com/brenorb/fast-transcript/releases/download/v0.2.9/fast-transcript-v0.2.9-macos-arm64.tar.gz"
+    sha256 "0ddf86f437635e1067ec1350d0098baa49d02ae31bd8a824fb1bea2708764493"
   elsif OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/brenorb/fast-transcript/releases/download/v0.2.8/fast-transcript-v0.2.8-linux-x86_64.tar.gz"
-    sha256 "d9649abb5c5214793c0c1dc83bb02a396d533f659f17455d7dad7eb8fc489b27"
+    url "https://github.com/brenorb/fast-transcript/releases/download/v0.2.9/fast-transcript-v0.2.9-linux-x86_64.tar.gz"
+    sha256 "bda40c7f5da72c827342ba562eeb37ad49aa159747207a3aeee12d765964a60d"
   else
-    url "https://github.com/brenorb/fast-transcript/archive/refs/tags/v0.2.8.tar.gz"
-    sha256 "5572ae3f1721315d7ad09b3875f4b53aa07a31ea9eb770246a9237c6cd4de7ef"
+    url "https://github.com/brenorb/fast-transcript/archive/refs/tags/v0.2.9.tar.gz"
+    sha256 "e58d9c58b919a91c2b5b2a765a9809aa08ebbc88087f5c2f79127495fa09aa76"
     depends_on "rust" => :build
   end
 
