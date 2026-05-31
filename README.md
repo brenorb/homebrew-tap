@@ -2,11 +2,22 @@
 
 ## How do I install these formulae?
 
-`brew install brenorb/tap/fast-transcript`
+```bash
+brew tap brenorb/tap
+brew install fast-transcript
+```
 
-Or:
+Or, if you want the fully-qualified formula name:
 
 ```bash
+brew install brenorb/tap/fast-transcript
+```
+
+If you previously used the old tap name, migrate with:
+
+```bash
+brew uninstall brenorb/fast-transcript/fast-transcript
+brew untap brenorb/fast-transcript
 brew tap brenorb/tap
 brew install fast-transcript
 ```
