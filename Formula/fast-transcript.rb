@@ -4,14 +4,14 @@ class FastTranscript < Formula
   license "MIT"
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/brenorb/fast-transcript/releases/download/v0.2.9/fast-transcript-v0.2.9-macos-arm64.tar.gz"
-    sha256 "0ddf86f437635e1067ec1350d0098baa49d02ae31bd8a824fb1bea2708764493"
+    url "https://github.com/brenorb/fast-transcript/releases/download/v1.0.0/fast-transcript-v1.0.0-macos-arm64.tar.gz"
+    sha256 "ddb44128f5215122243167ee7843fe0f18df081933daff2afc61c7b416181027"
   elsif OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/brenorb/fast-transcript/releases/download/v0.2.9/fast-transcript-v0.2.9-linux-x86_64.tar.gz"
-    sha256 "bda40c7f5da72c827342ba562eeb37ad49aa159747207a3aeee12d765964a60d"
+    url "https://github.com/brenorb/fast-transcript/releases/download/v1.0.0/fast-transcript-v1.0.0-linux-x86_64.tar.gz"
+    sha256 "05191223056baacd086d03b6f1885a971c489aec68402895f3d72971c4df1238"
   else
-    url "https://github.com/brenorb/fast-transcript/archive/refs/tags/v0.2.9.tar.gz"
-    sha256 "e58d9c58b919a91c2b5b2a765a9809aa08ebbc88087f5c2f79127495fa09aa76"
+    url "https://github.com/brenorb/fast-transcript/archive/refs/tags/v1.0.0.tar.gz"
+    sha256 "078138c895f3c7d1eaf1d31a09f48d5181c4672967bec504a4b9114811e9ccba"
     depends_on "rust" => :build
   end
 
