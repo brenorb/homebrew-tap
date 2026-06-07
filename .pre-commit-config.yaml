@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: brew-style-formula
+        name: brew style formulae
+        entry: ./scripts/brew-style-formula.sh
+        language: system
+        files: ^Formula/.*\.rb$
+        pass_filenames: true

@@ -36,6 +36,17 @@ The formula uses prebuilt release binaries on:
 
 Other platforms fall back to a source build.
 
+## Development
+
+Install the local pre-commit hook before editing formulae:
+
+```bash
+python3 -m pip install pre-commit
+pre-commit install
+```
+
+The hook runs `brew style --fix` on changed files under `Formula/` so Homebrew audit ordering issues are caught before push.
+
 ## Documentation
 
 `brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
