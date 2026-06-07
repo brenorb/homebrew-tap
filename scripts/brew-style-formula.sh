@@ -30,3 +30,12 @@ then
   echo "Homebrew style auto-corrected formulae. Review the changes and re-stage them."
   exit 1
 fi
+
+for file in "${formula_files[@]}"
+do
+  if rg -q '^  version "' "${file}" && rg -q 'releases/download/v|archive/refs/tags/v' "${file}"
+  then
+    echo "Redundant explicit version detected in ${file}. Let Homebrew infer the version from the GitHub URL."
+    exit 1
+  fi
+done
