@@ -4,14 +4,14 @@ class FastTranscript < Formula
   license "MIT"
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/brenorb/fast-transcript/releases/download/v1.0.1/fast-transcript-v1.0.1-macos.tar.gz"
-    sha256 "e354ffd88fe03e39f1d5a4cbbf968d7728794ef3a05c5a07c2f8b3f4310246d5"
+    url "https://github.com/brenorb/fast-transcript/releases/download/v1.0.3/fast-transcript-v1.0.3-macos-arm64.tar.gz"
+    sha256 "1814b62ca5a3a6e713f47e15b5d4e0eef9ec2b169f7484e56a92982ec2e0a969"
   elsif OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/brenorb/fast-transcript/releases/download/v1.0.1/fast-transcript-v1.0.1-linux.tar.gz"
-    sha256 "ac012fd951086c1f644f83b14b53c6c102171ccb754a72f244494ecbd5ae1c24"
+    url "https://github.com/brenorb/fast-transcript/releases/download/v1.0.3/fast-transcript-v1.0.3-linux-x86_64.tar.gz"
+    sha256 "d6b76108ccdf2d444b6f072497a1d95405784922f31f3ac8764e0861be865f2d"
   else
-    url "https://github.com/brenorb/fast-transcript/archive/refs/tags/v1.0.1.tar.gz"
-    sha256 "870a7880fc2ebecc8cf092e6493383eafd55c6d360797bfdb90da39ca9a875ef"
+    url "https://github.com/brenorb/fast-transcript/archive/refs/tags/v1.0.3.tar.gz"
+    sha256 "5df8a344dbfb0b79333b980f3fdad6278d0f87f45dc839e8068bd0098f0b6a3a"
     depends_on "rust" => :build
   end
 
@@ -41,6 +41,7 @@ class FastTranscript < Formula
   test do
     output = shell_output("#{bin}/fscript --help")
     assert_match "Usage:", output
+    assert_match "<media-or-url>", output
     assert_match version.to_s, shell_output("#{bin}/fscript --version")
     if OS.mac? && Hardware::CPU.arm?
       assert_path_exists Formula["fluidaudio-cli"].opt_bin/"fluidaudiocli"

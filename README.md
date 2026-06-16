@@ -47,6 +47,8 @@ pre-commit install
 
 The hook runs `brew style --fix` on changed files under `Formula/` so Homebrew audit ordering issues are caught before push.
 
+CI also checks that `Formula/fast-transcript.rb` stays aligned with the latest `fscript` PyPI version and points at real upstream GitHub release assets.
+
 ## Documentation
 
 `brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).

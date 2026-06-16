@@ -40,6 +40,8 @@ jobs:
       - run: brew test-bot --only-setup
 
       - run: brew test-bot --only-tap-syntax
+      - name: Verify fast-transcript release sync
+        run: python3 scripts/check_fast_transcript_release_sync.py
       - run: brew test-bot --only-formulae
         if: github.event_name == 'pull_request'
 
