@@ -33,9 +33,14 @@ fi
 
 for file in "${formula_files[@]}"
 do
-  if rg -q '^  version "' "${file}" && rg -q 'releases/download/v|archive/refs/tags/v' "${file}"
+  if [[ "${file}" == "Formula/fast-transcript.rb" ]]
   then
-    echo "Redundant explicit version detected in ${file}. Let Homebrew infer the version from the GitHub URL."
-    exit 1
+    if ! command -v python3 >/dev/null 2>&1
+    then
+      echo "python3 is required to validate ${file}. Install Python or skip this hook explicitly."
+      exit 1
+    fi
+
+    python3 scripts/check_fast_transcript_release_sync.py
   fi
 done
