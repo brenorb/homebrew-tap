@@ -47,7 +47,9 @@ pre-commit install
 
 The hook runs `brew style --fix` on changed files under `Formula/` so Homebrew audit ordering issues are caught before push.
 
-CI also checks that `Formula/fast-transcript.rb` stays aligned with the latest `fscript` PyPI version and points at real upstream GitHub release assets.
+When `Formula/fast-transcript.rb` changes, the hook also runs `scripts/check_fast_transcript_release_sync.py` to ensure the formula's explicit `version` matches its release URLs, the latest `fscript` PyPI version, and the published upstream GitHub release assets.
+
+Keep the explicit `version` in `Formula/fast-transcript.rb`. Homebrew misparses the version from release filenames like `fast-transcript-v1.1.2-macos-arm64.tar.gz` and will otherwise treat `arm64` as version `64`.
 
 ## Documentation
 
