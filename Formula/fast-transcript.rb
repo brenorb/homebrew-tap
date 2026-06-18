@@ -1,6 +1,7 @@
 class FastTranscript < Formula
   desc "Fast local transcription for large lectures with NVIDIA Parakeet ONNX"
   homepage "https://github.com/brenorb/fast-transcript"
+  version "1.1.2"
   license "MIT"
 
   if OS.mac? && Hardware::CPU.arm?
