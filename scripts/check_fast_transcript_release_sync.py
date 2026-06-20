@@ -21,20 +21,19 @@ def main() -> int:
     formula = FORMULA_PATH.read_text(encoding="utf-8")
 
     explicit_versions = re.findall(r'^\s*version "(\d+\.\d+\.\d+)"$', formula, flags=re.MULTILINE)
-    if len(explicit_versions) != 1:
+    if not explicit_versions:
         raise SystemExit(
-            f"expected exactly one explicit fast-transcript formula version, found {explicit_versions}"
+            "expected explicit fast-transcript formula versions on the release-asset branches"
         )
-    declared_version = explicit_versions[0]
 
     versions = sorted(set(re.findall(r"v(\d+\.\d+\.\d+)", formula)))
     if len(versions) != 1:
         raise SystemExit(f"expected exactly one fast-transcript version in formula, found {versions}")
     formula_version = versions[0]
 
-    if declared_version != formula_version:
+    if sorted(set(explicit_versions)) != [formula_version]:
         raise SystemExit(
-            f'formula version "{declared_version}" does not match release URL version {formula_version}'
+            f"explicit formula versions {sorted(set(explicit_versions))} do not match release URL version {formula_version}"
         )
 
     release_asset_urls = re.findall(
@@ -63,7 +62,7 @@ def main() -> int:
         )
 
     print(
-        f"fast-transcript formula {declared_version} is in sync with PyPI {pypi_version} "
+        f"fast-transcript formula {formula_version} is in sync with PyPI {pypi_version} "
         f"and GitHub release v{formula_version}"
     )
     return 0
