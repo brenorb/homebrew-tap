@@ -51,7 +51,7 @@ When `Formula/fast-transcript.rb` changes, the hook also runs `scripts/check_fas
 
 Keep the explicit `version` in `Formula/fast-transcript.rb`. Homebrew misparses the version from release filenames like `fast-transcript-v1.1.2-macos-arm64.tar.gz` and will otherwise treat `arm64` as version `64`.
 
-When a workflow step executes a repo-local script like `scripts/...`, include `actions/checkout` earlier in the job. The Actions runner does not provide the repository working tree by default.
+When a workflow step executes a repo-local script like `scripts/...`, run it in a normal job with `actions/checkout` first. Keep the Homebrew `brew test-bot` container job limited to Homebrew commands; checking out the repo inside that containerized job is brittle.
 
 ## Documentation
 

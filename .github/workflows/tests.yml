@@ -22,9 +22,6 @@ jobs:
       contents: read
       pull-requests: read
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
       - name: Set up Homebrew
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@main
@@ -37,19 +34,11 @@ jobs:
           path: ${{ steps.set-up-homebrew.outputs.gems-path }}
           key: ${{ matrix.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
           restore-keys: ${{ matrix.os }}-rubygems-
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
-
       - run: brew test-bot --only-cleanup-before
 
       - run: brew test-bot --only-setup
 
       - run: brew test-bot --only-tap-syntax
-      - name: Verify fast-transcript release sync
-        run: python3 scripts/check_fast_transcript_release_sync.py
       - run: brew test-bot --only-formulae
         if: github.event_name == 'pull_request'
 
@@ -59,3 +48,19 @@ jobs:
         with:
           name: bottles_${{ matrix.os }}
           path: '*.bottle.*'
+
+  release-sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Verify fast-transcript release sync
+        run: python3 scripts/check_fast_transcript_release_sync.py
