@@ -1,14 +1,15 @@
 class FastTranscript < Formula
   desc "Fast local transcription for large lectures with NVIDIA Parakeet ONNX"
   homepage "https://github.com/brenorb/fast-transcript"
-  version "1.1.2"
   license "MIT"
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://github.com/brenorb/fast-transcript/releases/download/v1.1.2/fast-transcript-v1.1.2-macos-arm64.tar.gz"
+    version "1.1.2"
     sha256 "3351665fa344e83c8b493e1dd22e7b243b43a609df079742dd73b5f8227da610"
   elsif OS.linux? && Hardware::CPU.intel?
     url "https://github.com/brenorb/fast-transcript/releases/download/v1.1.2/fast-transcript-v1.1.2-linux-x86_64.tar.gz"
+    version "1.1.2"
     sha256 "b229a8ccdb1cefd4dcec3bac0a1932f1dc73afe4b69e3e082ee6cb56392b3912"
   else
     url "https://github.com/brenorb/fast-transcript/archive/refs/tags/v1.1.2.tar.gz"

@@ -49,7 +49,9 @@ The hook runs `brew style --fix` on changed files under `Formula/` so Homebrew a
 
 When `Formula/fast-transcript.rb` changes, the hook also runs `scripts/check_fast_transcript_release_sync.py` to ensure the formula's explicit `version` matches its release URLs, the latest `fscript` PyPI version, and the published upstream GitHub release assets.
 
-Keep the explicit `version` in `Formula/fast-transcript.rb`. Homebrew misparses the version from release filenames like `fast-transcript-v1.1.2-macos-arm64.tar.gz` and will otherwise treat `arm64` as version `64`.
+Keep explicit `version` lines on the release-asset branches in `Formula/fast-transcript.rb`. Homebrew misparses filenames like `fast-transcript-v1.1.2-macos-arm64.tar.gz` and can otherwise treat `arm64` as version `64`, but the source-tarball fallback branch should omit the redundant explicit version.
+
+When a workflow step executes a repo-local script like `scripts/...`, run it in a normal job with `actions/checkout` first. Keep the Homebrew `brew test-bot` container job limited to Homebrew commands; checking out the repo inside that containerized job is brittle.
 
 ## Documentation
 
