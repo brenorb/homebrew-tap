@@ -134,7 +134,22 @@ class BitchatCli < Formula
   end
 
   def install
-    virtualenv_install_with_resources
+    venv = virtualenv_create(libexec, "python3.12")
+    wheelhouse = buildpath/"wheelhouse"
+    wheelhouse.mkpath
+
+    resource_wheels = resources.map do |resource|
+      cached = resource.cached_download
+      wheel = wheelhouse/cached.basename.to_s.sub(/^[0-9a-f]+--/, "")
+      cp cached, wheel
+      wheel
+    end
+
+    formula_wheel = wheelhouse/cached_download.basename.to_s.sub(/^[0-9a-f]+--/, "")
+    cp cached_download, formula_wheel
+
+    venv.pip_install resource_wheels
+    venv.pip_install_and_link formula_wheel
   end
 
   def caveats
