@@ -13,6 +13,19 @@ Or, if you want the fully-qualified formula name:
 brew install brenorb/tap/fast-transcript
 ```
 
+For BitChat, either of these works:
+
+```bash
+brew install brenorb/tap/bitchat-cli
+brew install brenorb/tap/bitchat4agents
+```
+
+The installed executable is:
+
+```bash
+bitchat
+```
+
 If you previously used the old tap name, migrate with:
 
 ```bash
