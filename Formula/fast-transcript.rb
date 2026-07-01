@@ -46,8 +46,8 @@ class FastTranscript < Formula
     assert_match "<media-or-url>", output
     assert_match version.to_s, shell_output("#{bin}/fscript --version")
     if OS.mac? && Hardware::CPU.arm?
-      assert_path_exists Formula["fluidaudio-cli"].opt_bin/"fluidaudiocli"
-      helper_help = shell_output("#{Formula["fluidaudio-cli"].opt_bin}/fluidaudiocli process --help 2>&1")
+      assert_path_exists formula_opt_bin("fluidaudio-cli")/"fluidaudiocli"
+      helper_help = shell_output("#{formula_opt_bin("fluidaudio-cli")}/fluidaudiocli process --help 2>&1")
       assert_match "Process Command Usage", helper_help
     end
   end
